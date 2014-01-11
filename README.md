@@ -28,7 +28,7 @@ Use steamweb in your clojure code:
 
 ## Acknowledgement
 
-I used Sun Ning's (reddit.clj)[https://github.com/sunng87/reddit.clj] as a base for this project.
+I used Sun Ning's [reddit.clj](https://github.com/sunng87/reddit.clj) as a base for this project.
 
 ## License
 
