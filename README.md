@@ -2,6 +2,8 @@
 
 A clojure wrapper for Steam Web API.
 
+[![Build Status](https://travis-ci.org/nabrozidhs/steamweb.clj.png?branch=master)](https://travis-ci.org/nabrozidhs/steamweb.clj)
+
 ## Usage
 
 I still need to publish the library sorry for that! :(
