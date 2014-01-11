@@ -1,4 +1,4 @@
-(defproject steamweb "0.1.0-SNAPSHOT"
+(defproject steamweb "0.1.0"
   :description "A Steam Web API wrapper for clojure"
   :author "Alex Nabrozidis (nabrozidhs@gmail.com)"
   :license {:name "Eclipse Public License"

@@ -15,23 +15,23 @@
                                        (str "?" (util/serialise-args args))])))
 
 
-; SteamNews methods.
+;; SteamNews methods.
 
 (def SteamNews "ISteamNews")
 
 (defn news-app
-  "Returns the latest news for the specified game."
-  ([app] (news-app app 3 300))
-  ([app count] (news-app app count 300))
-  ([app count maxlength] (steam SteamNews
-                                "GetNewsForApp"
-                                2
-                                {"appid" app,
-                                 "count" count,
-                                 "maxlength" maxlength,
-                                 "format" "json"})))
+  "Returns the latest news for the specified app id."
+  ([appid] (news-app appid 3 300))
+  ([appid count] (news-app appid count 300))
+  ([appid count maxlength] (steam SteamNews
+                                  "GetNewsForApp"
+                                  2
+                                  {"appid" appid,
+                                   "count" count,
+                                   "maxlength" maxlength,
+                                   "format" "json"})))
 
-; SteamUser methods.
+;; SteamUser methods.
 
 (def SteamUser "ISteamUser")
 
@@ -41,7 +41,7 @@
                         "GetPlayerSummaries"
                         2
                         {"key" key,
-                         "steamids" steamids
+                         "steamids" (string/join "," steamids)
                          "format" "json"}))
 
 (defn friend-list
@@ -49,7 +49,7 @@
 Steam Community profile is set to Public.
 
   Correct values for relationship are: \"all\" and \"friend\"."
-  ([key steamid] (friend-list key steamid "friend"))
+  ([key steamid] (friend-list key steamid "all"))
   ([key steamid relationship] (steam SteamUser
                                      "GetFriendList"
                                      1
@@ -58,7 +58,43 @@ Steam Community profile is set to Public.
                                       "relationship" relationship
                                       "format" "json"})))
 
-; PlayerService methods
+;; SteamUserStats methods.
+
+(def SteamUserStats "ISteamUserStats")
+
+(defn global-achievement-percentages-for-app
+  "Returns global achievements overview for the specified game in percentages."
+  [gameid] (steam SteamUserStats
+                  "GetGlobalAchievementPercentagesForApp"
+                  2
+                  {"gameid" gameid
+                   "format" "json"}))
+
+(defn player-achievements
+  "Returns a list of achievements for the specified user and app id."
+  ([key steamid appid] (player-achievements key steamid appid "en"))
+  ([key steamid appid l] (steam SteamUserStats
+                                "GetPlayerAchievements"
+                                1
+                                {"key" key
+                                 "steamid" steamid
+                                 "appid" appid
+                                 "l" l
+                                 "format" "json"})))
+
+(defn user-stats-for-game
+  "Returns a list of stats for the specified user and app id."
+  ([key steamid appid] (user-stats-for-game key steamid appid "en"))
+  ([key steamid appid l] (steam SteamUserStats
+                                "GetUserStatsForGame"
+                                2
+                                {"key" key
+                                 "steamid" steamid
+                                 "appid" appid
+                                 "l" l
+                                 "format" "json"})))
+
+;; PlayerService methods
 
 (def PlayerService "IPlayerService")
 
