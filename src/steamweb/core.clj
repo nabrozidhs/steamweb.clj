@@ -94,6 +94,17 @@ Steam Community profile is set to Public.
                                  "l" l
                                  "format" "json"})))
 
+(defn schema-for-game
+  "Returns game information for the specified app id."
+  ([key appid] (schema-for-game key appid "en"))
+  ([key appid l] (steam SteamUserStats
+                        "GetSchemaForGame"
+                        2
+                        {"key" key
+                         "appid" appid
+                         "l" l
+                         "format" "json"})))
+
 ;; PlayerService methods
 
 (def PlayerService "IPlayerService")
