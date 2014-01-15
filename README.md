@@ -4,11 +4,17 @@ A clojure wrapper for Steam Web API.
 
 [![Build Status](https://travis-ci.org/nabrozidhs/steamweb.clj.png?branch=master)](https://travis-ci.org/nabrozidhs/steamweb.clj)
 
+## Installation
+
+`steamweb` is available as a Maven artifact from [Clojars](http://clojars.org/clj-http):
+
+```clojure
+[steamweb "0.1.0"]
+```
+
 ## Usage
 
-I still need to publish the library sorry for that! :(
-
-Use steamweb in your clojure code:
+The main funcionality is provided by the `steamweb.core` namespace.
 
 ``` clojure
 ;; include steamweb
@@ -34,6 +40,6 @@ I used Sun Ning's [reddit.clj](https://github.com/sunng87/reddit.clj) as a base 
 
 ## License
 
-Copyright (C) 2013 Alex Nabrozidis
+Copyright (C) 2014 Alex Nabrozidis
 
 Distributed under the Eclipse Public License, the same as Clojure.
